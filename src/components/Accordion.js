@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 
 const Accordion = ({ items }) => {
+  // HOOKS
   const [activeIndex, setActiveIndex] = useState(null);
-  const onTitleClick = index => {
-    setActiveIndex(index);
-  };
+
+  // HANDLE FUNCTIONS
+  const onTitleClick = index => setActiveIndex(index);
+
+  // RENDER FUNCTION
   const renderedItems = items.map((item, index) => {
     const active = index === activeIndex ? "active" : "";
     return (
