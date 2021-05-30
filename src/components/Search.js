@@ -6,26 +6,14 @@ const Search = () => {
 
   const [results, setResults] = useState([]);
 
+  //Use effect cleanup function
+
   useEffect(() => {
-    const search = async () => {
-      const { data } = await axios.get("https://en.wikipedia.org/w/api.php", {
-        params: {
-          action: "query",
-          list: "search",
-          origin: "*",
-          format: "json",
-          srsearch: term
-        }
-      });
+    console.log("Initial render on term was changed");
 
-      setResults(data.query.search);
+    return () => {
+      console.log("CLEANUP");
     };
-
-    const timeoutId = setTimeout(() => {
-      if (term) {
-        search();
-      }
-    }, 500);
   }, [term]);
 
   const renderedResults = results.map(result => {
