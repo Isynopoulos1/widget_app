@@ -21,7 +21,11 @@ const Search = () => {
       setResults(data.query.search);
     };
 
-    search();
+    const timeoutId = setTimeout(() => {
+      if (term) {
+        search();
+      }
+    }, 500);
   }, [term]);
 
   const renderedResults = results.map(result => {
@@ -43,7 +47,7 @@ const Search = () => {
       </div>
     );
   });
-
+  console.log(results);
   return (
     <div>
       <div className="ui form">
