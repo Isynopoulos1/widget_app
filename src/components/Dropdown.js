@@ -3,13 +3,17 @@ import React from "react";
 const Dropdown = ({ options, selected, onSelectedChange }) => {
   const renderedOptions = options.map(option => {
     return (
-      <div key={option.value} className="item">
+      <div
+        key={option.value}
+        className="item"
+        onClick={() => onSelectedChange(option)}
+      >
         {option.label}
       </div>
     );
   });
   return (
-    <div classNme="ui form">
+    <div className="ui form">
       <div className="field">
         <label className="label">Select a color</label>
         <div className="ui selection dropdown visible active">
